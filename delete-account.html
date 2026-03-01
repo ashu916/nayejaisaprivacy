@@ -6,46 +6,71 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 30px;
       background-color: #F4F7F1;
+      padding: 30px;
       color: #1A3125;
     }
     h1 {
       color: #E5603B;
     }
-    .box {
+    .container {
+      max-width: 400px;
       background: #ffffff;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 1px solid #E5EEE2;
     }
-    a {
-      color: #0D7A4F;
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #E5603B;
+      color: white;
+      border: none;
+      border-radius: 8px;
       font-weight: bold;
-      text-decoration: none;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .note {
+      font-size: 13px;
+      color: #466454;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <h1>NayeJaisa - Delete Account</h1>
+  <h1>NayeJaisa - Delete Account Request</h1>
 
-  <div class="box">
-    <p>If you want to delete your NayeJaisa account, please contact us using the details below.</p>
+  <div class="container">
+    <form action="mailto:support@nayejaisa.com" method="post" enctype="text/plain">
+      
+      <label>Full Name</label>
+      <input type="text" name="Full Name" required />
 
-    <p><strong>Email:</strong> 
-      <a href="mailto:support@nayejaisa.com">support@nayejaisa.com</a>
+      <label>Registered Mobile Number</label>
+      <input type="tel" name="Mobile Number" required />
+
+      <label>Reason (Optional)</label>
+      <textarea name="Reason" rows="3"></textarea>
+
+      <button type="submit">Submit Delete Request</button>
+    </form>
+
+    <p class="note">
+      After verification, your account and all associated data will be permanently deleted within 7 working days.
     </p>
-
-    <p><strong>Phone:</strong> 
-      <a href="tel:+918817332335">+91 8817332335</a>
-    </p>
-
-    <p><strong>WhatsApp:</strong> 
-      <a href="https://wa.me/918817332335">Chat on WhatsApp</a>
-    </p>
-
-    <p>After verification, your account and all related data will be permanently deleted within 7 working days.</p>
   </div>
 
 </body>
