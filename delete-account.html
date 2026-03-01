@@ -6,72 +6,107 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #F4F7F1;
       padding: 30px;
+      background-color: #F4F7F1;
       color: #1A3125;
+      text-align: center;
     }
+
     h1 {
       color: #E5603B;
     }
-    .container {
-      max-width: 400px;
+
+    .box {
       background: #ffffff;
       padding: 20px;
-      border-radius: 12px;
+      border-radius: 10px;
       border: 1px solid #E5EEE2;
+      max-width: 400px;
+      margin: auto;
     }
-    input, textarea {
+
+    input {
       width: 100%;
       padding: 10px;
-      margin-top: 8px;
-      margin-bottom: 15px;
-      border-radius: 8px;
+      margin: 8px 0;
+      border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 14px;
     }
-    button {
-      width: 100%;
+
+    .btn {
+      display: block;
+      margin-top: 12px;
       padding: 12px;
-      background-color: #E5603B;
-      color: white;
-      border: none;
       border-radius: 8px;
       font-weight: bold;
+      text-decoration: none;
+      color: #ffffff;
       cursor: pointer;
     }
-    button:hover {
-      opacity: 0.9;
-    }
-    .note {
-      font-size: 13px;
-      color: #466454;
-      margin-top: 10px;
-    }
+
+    .email { background-color: #0D7A4F; }
+    .whatsapp { background-color: #25D366; }
   </style>
 </head>
 <body>
 
-  <h1>NayeJaisa - Delete Account Request</h1>
+  <h1>Delete Your NayeJaisa Account</h1>
 
-  <div class="container">
-    <form action="mailto:support@nayejaisa.com" method="post" enctype="text/plain">
-      
-      <label>Full Name</label>
-      <input type="text" name="Full Name" required />
+  <div class="box">
+    <p>Please enter your details to request account deletion.</p>
 
-      <label>Registered Mobile Number</label>
-      <input type="tel" name="Mobile Number" required />
+    <input type="text" id="name" placeholder="Enter Your Name" required />
+    <input type="tel" id="mobile" placeholder="Enter Registered Mobile Number" required />
 
-      <label>Reason (Optional)</label>
-      <textarea name="Reason" rows="3"></textarea>
+    <a id="emailBtn" class="btn email">Delete via Email</a>
+    <a id="waBtn" class="btn whatsapp">Delete via WhatsApp</a>
 
-      <button type="submit">Submit Delete Request</button>
-    </form>
-
-    <p class="note">
-      After verification, your account and all associated data will be permanently deleted within 7 working days.
+    <p style="margin-top:20px;font-size:12px;">
+      Your account will be permanently deleted within 7 working days after verification.
     </p>
   </div>
+
+<script>
+function getDetails() {
+  var name = document.getElementById("name").value.trim();
+  var mobile = document.getElementById("mobile").value.trim();
+
+  if (!name || !mobile) {
+    alert("Please enter both name and mobile number.");
+    return null;
+  }
+
+  return { name, mobile };
+}
+
+document.getElementById("emailBtn").onclick = function () {
+  var details = getDetails();
+  if (!details) return;
+
+  var subject = "Delete My NayeJaisa Account";
+  var body = "Hello NayeJaisa Team,%0A%0A"
+           + "I want to delete my account.%0A%0A"
+           + "Name: " + details.name + "%0A"
+           + "Registered Mobile: " + details.mobile + "%0A%0A"
+           + "Thank you.";
+
+  window.location.href =
+    "mailto:nayejaisaapp@gmail.com?subject=" + subject + "&body=" + body;
+};
+
+document.getElementById("waBtn").onclick = function () {
+  var details = getDetails();
+  if (!details) return;
+
+  var message = "Hello NayeJaisa Team, I want to delete my account. "
+              + "Name: " + details.name + ", "
+              + "Registered Mobile: " + details.mobile;
+
+  window.location.href =
+    "https://wa.me/918817332335?text=" + encodeURIComponent(message);
+};
+</script>
 
 </body>
 </html>
